@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,27 +8,28 @@
     <!-- SEO Meta Tags -->
     <meta name="description" content="보험 가입 전 필수 코스! 복잡한 보험료 비교, 원하는 보험을 선택하고 1분 만에 최저가 견적 카드를 뽑아보세요.">
     <meta name="keywords" content="보험료비교, 다이렉트보험, 종합보험, 간병보험, 운전자보험, 치아보험">
-    
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Noto Sans KR -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
-    
+    <!-- Web Font: Pretendard -->
+    <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['"Noto Sans KR"', 'sans-serif'],
+                        sans: ['"Pretendard"', 'sans-serif'],
                     },
                     colors: {
                         fcbg: '#0a0e17',
                         fcpanel: '#151b2b',
                         fcaccent: '#d4ff00',
                         fctext: '#e2e8f0',
-                        fcgold: '#fbbf24',       
-                        fcgolddark: '#78350f',   
-                        fcgoldlight: '#fef08a',  
+                        fcgold: '#fbbf24',
+                        fcgolddark: '#78350f',
+                        fcgoldlight: '#fef08a',
                     }
                 }
             }
@@ -36,10 +38,11 @@
 
     <style>
         body {
-            font-family: 'Noto Sans KR', sans-serif;
+            font-family: 'Pretendard', sans-serif;
             background-color: #0a0e17;
             color: #e2e8f0;
             overflow-x: hidden;
+            letter-spacing: -0.02em;
         }
 
         /* 체크박스 커스텀 */
@@ -52,10 +55,12 @@
             display: inline-block;
             position: relative;
         }
+
         input[type="checkbox"]:checked {
             background-color: #d4ff00;
             border-color: #d4ff00;
         }
+
         input[type="checkbox"]:checked::after {
             content: '✔';
             position: absolute;
@@ -84,6 +89,7 @@
             transition: all 0.2s;
             cursor: pointer;
         }
+
         /* 성별 버튼 활성화(선택) 스타일 */
         .gender-btn.active {
             background-color: #d4ff00 !important;
@@ -97,31 +103,38 @@
             transition: all 0.2s ease-in-out;
             cursor: pointer;
         }
-        .btn-game > div {
+
+        .btn-game>div {
             transform: skewX(5deg);
         }
+
         .btn-game:hover {
             transform: skewX(-5deg) scale(1.02);
             box-shadow: 0 0 15px rgba(212, 255, 0, 0.4);
         }
+
         .btn-game.gold:hover {
             box-shadow: 0 0 15px rgba(251, 191, 36, 0.5);
         }
 
-        .ins-radio:checked + div {
+        .ins-radio:checked+div {
             border-color: #d4ff00;
             background-color: rgba(212, 255, 0, 0.1);
             box-shadow: 0 0 15px rgba(212, 255, 0, 0.3);
             transform: translateY(-2px);
         }
-        .ins-radio:checked + div .check-icon {
+
+        .ins-radio:checked+div .check-icon {
             opacity: 1;
         }
 
         #pack-overlay {
             z-index: 9999;
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: radial-gradient(circle at center, #27272a 0%, #000000 100%);
             display: none;
             flex-direction: column;
@@ -132,118 +145,235 @@
         }
 
         @keyframes screenShake {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); filter: blur(0px); }
-            10% { transform: translate(-15px, -15px) rotate(-2deg); filter: blur(2px); }
-            20% { transform: translate(15px, 15px) rotate(2deg); filter: blur(0px); }
-            30% { transform: translate(-20px, 10px) rotate(-3deg); filter: blur(3px); }
-            40% { transform: translate(20px, -10px) rotate(3deg); filter: blur(0px); }
-            50% { transform: translate(-15px, -20px) rotate(-2deg); filter: blur(2px); }
-            60% { transform: translate(15px, 20px) rotate(2deg); filter: blur(0px); }
-            70% { transform: translate(-10px, 15px) rotate(-1deg); filter: blur(1px); }
-            80% { transform: translate(10px, -15px) rotate(1deg); filter: blur(0px); }
-            90% { transform: translate(-5px, -10px) rotate(0deg); filter: blur(1px); }
+
+            0%,
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+                filter: blur(0px);
+            }
+
+            10% {
+                transform: translate(-15px, -15px) rotate(-2deg);
+                filter: blur(2px);
+            }
+
+            20% {
+                transform: translate(15px, 15px) rotate(2deg);
+                filter: blur(0px);
+            }
+
+            30% {
+                transform: translate(-20px, 10px) rotate(-3deg);
+                filter: blur(3px);
+            }
+
+            40% {
+                transform: translate(20px, -10px) rotate(3deg);
+                filter: blur(0px);
+            }
+
+            50% {
+                transform: translate(-15px, -20px) rotate(-2deg);
+                filter: blur(2px);
+            }
+
+            60% {
+                transform: translate(15px, 20px) rotate(2deg);
+                filter: blur(0px);
+            }
+
+            70% {
+                transform: translate(-10px, 15px) rotate(-1deg);
+                filter: blur(1px);
+            }
+
+            80% {
+                transform: translate(10px, -15px) rotate(1deg);
+                filter: blur(0px);
+            }
+
+            90% {
+                transform: translate(-5px, -10px) rotate(0deg);
+                filter: blur(1px);
+            }
         }
+
         .overlay-shake {
-            animation: screenShake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+            animation: screenShake 0.5s cubic-bezier(.36, .07, .19, .97) both;
         }
 
         .stage-light {
             position: absolute;
-            top: 0; left: -50%;
-            width: 200%; height: 100%;
-            background: radial-gradient(ellipse at center, rgba(251, 191, 36, 0.15) 0%, transparent 60%);
-            opacity: 0; transition: opacity 1s ease-in;
+            top: 0;
+            left: -50%;
+            width: 200%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, rgba(0, 240, 255, 0.15) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 1s ease-in;
             pointer-events: none;
             z-index: 0;
         }
 
         .fc-card-container {
             perspective: 1500px;
-            width: 320px; 
+            width: 320px;
             height: 480px;
-            display: none; 
+            display: none;
             z-index: 10;
             margin-top: 15vh;
             position: relative;
             transition: transform 0.1s;
         }
+
         .fc-card-container:active {
             transform: scale(0.95);
         }
 
         .glow-orb {
-            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            width: 800px; height: 800px;
-            background: radial-gradient(circle, rgba(251, 191, 36, 0.5) 0%, rgba(212, 255, 0, 0.15) 40%, transparent 70%);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(0, 240, 255, 0.5) 0%, rgba(59, 130, 246, 0.25) 40%, transparent 70%);
             border-radius: 50%;
-            opacity: 0; z-index: -2; pointer-events: none;
+            opacity: 0;
+            z-index: -2;
+            pointer-events: none;
         }
+
         .fc-card-container.reveal .glow-orb {
             animation: rayFadeIn 1s forwards, orbPulse 4s ease-in-out infinite;
         }
+
         @keyframes orbPulse {
-            0%, 100% { transform: translate(-50%, -50%) scale(1); }
-            50% { transform: translate(-50%, -50%) scale(1.15); }
+
+            0%,
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+
+            50% {
+                transform: translate(-50%, -50%) scale(1.15);
+            }
         }
 
         .light-rays {
-            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            width: 1400px; height: 1400px;
-            background: repeating-conic-gradient(
-                from 0deg,
-                rgba(251, 191, 36, 0) 0deg,
-                rgba(251, 191, 36, 0) 5deg,
-                rgba(255, 240, 150, 0.4) 10deg,
-                rgba(251, 191, 36, 0) 15deg,
-                rgba(251, 191, 36, 0) 20deg
-            );
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 1400px;
+            height: 1400px;
+            background: repeating-conic-gradient(from 0deg,
+                    rgba(0, 240, 255, 0) 0deg,
+                    rgba(0, 240, 255, 0) 5deg,
+                    rgba(186, 230, 253, 0.4) 10deg,
+                    rgba(0, 240, 255, 0) 15deg,
+                    rgba(0, 240, 255, 0) 20deg);
             border-radius: 50%;
-            -webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 15%, rgba(0,0,0,0) 65%);
-            mask-image: radial-gradient(circle, rgba(0,0,0,1) 15%, rgba(0,0,0,0) 65%);
-            opacity: 0; z-index: -1; pointer-events: none;
+            -webkit-mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 15%, rgba(0, 0, 0, 0) 65%);
+            mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 15%, rgba(0, 0, 0, 0) 65%);
+            opacity: 0;
+            z-index: -1;
+            pointer-events: none;
         }
+
         .fc-card-container.reveal .light-rays {
             animation: rayFadeIn 0.8s forwards, raySpin 25s linear infinite;
         }
-        @keyframes raySpin { 100% { transform: translate(-50%, -50%) rotate(360deg); } }
-        @keyframes rayFadeIn { 0% { opacity: 0; } 100% { opacity: 1; } }
+
+        @keyframes raySpin {
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+        @keyframes rayFadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
 
         .screen-flash {
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            background-color: #ffffff; opacity: 0; pointer-events: none; z-index: 9999;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: #ffffff;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 9999;
         }
+
         .screen-flash.explode {
             animation: nuclearFlash 0.8s ease-out forwards;
         }
+
         @keyframes nuclearFlash {
-            0% { opacity: 0; }
-            10% { opacity: 1; }
-            100% { opacity: 0; }
+            0% {
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
         }
 
         .fc-card-inner {
-            width: 100%; height: 100%;
-            transition: transform 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.1); 
+            width: 100%;
+            height: 100%;
+            transition: transform 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.1);
             transform-style: preserve-3d;
-            transform: rotateY(180deg) scale(0.5); 
+            transform: rotateY(180deg) scale(0.5);
         }
 
         .fc-card-container.reveal .fc-card-inner {
-            transform: rotateY(0deg) scale(1); 
+            transform: rotateY(0deg) scale(1);
         }
 
         @keyframes floatCard {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
         }
+
         @keyframes pulseGlowBack {
-            0%, 100% { box-shadow: 0 0 30px rgba(251, 191, 36, 0.4); filter: brightness(1); }
-            50% { box-shadow: 0 0 60px rgba(251, 191, 36, 0.8); filter: brightness(1.3); }
+
+            0%,
+            100% {
+                box-shadow: 0 0 30px rgba(0, 240, 255, 0.4);
+                filter: brightness(1);
+            }
+
+            50% {
+                box-shadow: 0 0 60px rgba(0, 240, 255, 0.8);
+                filter: brightness(1.3);
+            }
         }
+
         .fc-card-container.waiting-click {
             animation: floatCard 2.5s ease-in-out infinite;
             cursor: pointer;
         }
+
         .fc-card-container.waiting-click .fc-card-back {
             animation: pulseGlowBack 2s infinite;
         }
@@ -253,118 +383,316 @@
             bottom: -70px;
             left: 50%;
             transform: translateX(-50%);
-            color: #d4ff00;
+            color: #00f0ff;
             font-weight: 900;
             font-size: 1.3rem;
             white-space: nowrap;
             animation: pulseText 1.2s infinite;
-            text-shadow: 0 0 15px rgba(212, 255, 0, 0.8);
+            text-shadow: 0 0 15px rgba(0, 240, 255, 0.8);
             pointer-events: none;
             display: none;
         }
+
         @keyframes pulseText {
-            0%, 100% { opacity: 1; transform: translateX(-50%) scale(1); }
-            50% { opacity: 0.4; transform: translateX(-50%) scale(0.95); }
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: translateX(-50%) scale(1);
+            }
+
+            50% {
+                opacity: 0.4;
+                transform: translateX(-50%) scale(0.95);
+            }
         }
 
-        .fc-card-front, .fc-card-back {
-            position: absolute; width: 100%; height: 100%;
+        .fc-card-front,
+        .fc-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
             backface-visibility: hidden;
             border-radius: 16px;
-            box-shadow: 0 0 30px rgba(0,0,0,0.8);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
         }
 
         .fc-card-back {
-            background: linear-gradient(135deg, #111827, #374151);
-            border: 2px solid #4b5563;
+            background: linear-gradient(135deg, #111827, #1e3a8a);
+            border: 2px solid #3b82f6;
             transform: rotateY(180deg);
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-        }
-        .fc-card-back::after {
-            content: 'TOP CLASS';
-            color: rgba(251, 191, 36, 0.6);
-            font-weight: 900; font-style: italic; font-size: 1.8rem; margin-top: 10px;
-            text-shadow: 0 0 10px rgba(251, 191, 36, 0.4);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
-        .fc-card-front.gold {
-            background: linear-gradient(145deg, #78350f, #b45309, #fcd34d, #b45309);
-            border: 4px solid #fef08a;
-            box-shadow: 0 0 40px rgba(251, 191, 36, 0.6), inset 0 0 20px rgba(255,255,255,0.5);
+        .fc-card-back::after {
+            content: 'TOP CLASS';
+            color: rgba(0, 240, 255, 0.6);
+            font-weight: 900;
+            font-style: italic;
+            font-size: 1.8rem;
+            margin-top: 10px;
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
+        }
+
+        .fc-card-front.toty {
+            background-color: #020617;
             position: relative;
+            clip-path: polygon(3% 0, 97% 0, 100% 3%, 100% 93%, 50% 100%, 0 93%, 0 3%);
+            box-shadow: 0 0 40px rgba(0, 240, 255, 0.6), inset 0 0 30px rgba(255, 15, 57, 0.4);
+            border-radius: 0;
             overflow: hidden;
         }
 
-        .fc-card-front::before {
-            content: ''; position: absolute; top: -100%; left: -100%;
-            width: 300%; height: 300%;
-            background: linear-gradient(to bottom right, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 30%, rgba(255,255,255,0) 100%);
-            transform: rotate(30deg);
+        .toty-border-inner {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            right: 2px;
+            bottom: 2px;
+            clip-path: polygon(3% 0, 97% 0, 100% 3%, 100% 93%, 50% 100%, 0 93%, 0 3%);
+            background: rgba(15, 23, 42, 0.4);
+            box-shadow: inset 0 0 20px rgba(0, 240, 255, 0.8), inset 0 0 40px rgba(255, 15, 57, 0.6);
+            z-index: 5;
             pointer-events: none;
-            animation: shine 3s infinite;
+        }
+
+        .toty-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 80% 20%, rgba(0, 240, 255, 0.5) 0%, transparent 50%),
+                radial-gradient(circle at 20% 80%, rgba(255, 15, 57, 0.6) 0%, transparent 50%),
+                linear-gradient(135deg, #020617 0%, #1e1b4b 50%, #020617 100%);
+            z-index: 1;
+        }
+
+        .toty-bg::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            left: -20%;
+            width: 140%;
+            height: 140%;
+            background: linear-gradient(115deg, transparent 40%, rgba(0, 240, 255, 0.3) 41%, rgba(0, 240, 255, 0.9) 45%, rgba(0, 240, 255, 0) 46%);
+            mix-blend-mode: screen;
+            animation: slashMove 3s infinite ease-in-out alternate;
+        }
+
+        .toty-bg::after {
+            content: '';
+            position: absolute;
+            top: -20%;
+            left: -20%;
+            width: 140%;
+            height: 140%;
+            background: linear-gradient(-65deg, transparent 40%, rgba(255, 15, 57, 0.3) 41%, rgba(255, 15, 57, 0.9) 45%, rgba(255, 15, 57, 0) 46%);
+            mix-blend-mode: screen;
+            animation: slashMove2 4s infinite ease-in-out alternate;
+        }
+
+        @keyframes slashMove {
+            0% {
+                transform: translateX(-15px) translateY(-5px);
+            }
+
+            100% {
+                transform: translateX(15px) translateY(5px);
+            }
+        }
+
+        @keyframes slashMove2 {
+            0% {
+                transform: translateX(15px) translateY(5px);
+            }
+
+            100% {
+                transform: translateX(-15px) translateY(-5px);
+            }
+        }
+
+        .toty-lightning {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(60deg, transparent 48%, rgba(255, 255, 255, 0.4) 49%, rgba(0, 240, 255, 0.9) 50%, rgba(255, 255, 255, 0.4) 51%, transparent 52%),
+                linear-gradient(-30deg, transparent 48%, rgba(255, 255, 255, 0.4) 49%, rgba(255, 15, 57, 0.9) 50%, rgba(255, 255, 255, 0.4) 51%, transparent 52%);
+            background-size: 150% 150%;
+            background-position: -20px -20px;
+            mix-blend-mode: color-dodge;
+            z-index: 2;
+            opacity: 0.6;
+            animation: lightningFlash 3s infinite;
+        }
+
+        @keyframes lightningFlash {
+
+            0%,
+            93% {
+                opacity: 0.2;
+            }
+
+            94% {
+                opacity: 1;
+            }
+
+            96% {
+                opacity: 0.2;
+            }
+
+            97% {
+                opacity: 0.8;
+            }
+
+            100% {
+                opacity: 0.2;
+            }
+        }
+
+        .text-stroke-2 {
+            color: #fbbf24;
+            -webkit-text-stroke: 1.5px black;
+            text-shadow: 2px 2px 0 #000, 3px 3px 0 #000, 0px 4px 6px rgba(0, 0, 0, 0.8);
         }
 
         .shockwave {
-            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            width: 10px; height: 10px; border-radius: 50%;
-            border: 15px solid #ffffff; opacity: 0; z-index: 40; pointer-events: none;
-            box-shadow: 0 0 50px #fbbf24, inset 0 0 50px #fbbf24;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            border: 15px solid #ffffff;
+            opacity: 0;
+            z-index: 40;
+            pointer-events: none;
+            box-shadow: 0 0 50px #00f0ff, inset 0 0 50px #00f0ff;
         }
+
         .fc-card-container.engrave-flash .shockwave {
             animation: shockwaveAnim 0.7s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
         }
+
         @keyframes shockwaveAnim {
-            0% { width: 10px; height: 10px; opacity: 1; border-width: 50px; }
-            100% { width: 1500px; height: 1500px; opacity: 0; border-width: 0px; }
+            0% {
+                width: 10px;
+                height: 10px;
+                opacity: 1;
+                border-width: 50px;
+            }
+
+            100% {
+                width: 1500px;
+                height: 1500px;
+                opacity: 0;
+                border-width: 0px;
+            }
         }
 
         .fc-card-data {
-            display: flex; flex-direction: column; width: 100%; height: 100%;
-            opacity: 0; filter: brightness(10) blur(20px); transform: scale(4);
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            filter: brightness(10) blur(20px);
+            transform: scale(4);
             transition: opacity 0.3s ease-out, filter 0.3s ease-out, transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.5);
         }
+
         .fc-card-container.engrave .fc-card-data {
-            opacity: 1; filter: brightness(1) blur(0px); transform: scale(1);
+            opacity: 1;
+            filter: brightness(1) blur(0px);
+            transform: scale(1);
         }
 
-        .card-ovr { font-size: 4rem; font-weight: 900; color: #fff; line-height: 1; text-shadow: 0 0 15px rgba(255,255,255,0.8); }
-        .card-pos { font-size: 1.2rem; font-weight: 900; color: #451a03; letter-spacing: 1px; }
-        .card-name { font-size: 1.6rem; font-weight: 900; text-align: center; color: #fff; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); border-top: 1px solid rgba(255,255,255,0.4); border-bottom: 1px solid rgba(255,255,255,0.4); padding: 8px 0; margin-top: auto;}
-        
-        .card-stats {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 6px 12px;
-            padding: 12px; background: rgba(0,0,0,0.6); margin: 0 10px 15px 10px; border-radius: 8px; border: 1px solid rgba(251, 191, 36, 0.3);
+        .spark {
+            position: absolute;
+            width: 4px;
+            height: 20px;
+            border-radius: 2px;
+            opacity: 0;
+            z-index: 20;
         }
-        .stat-item { display: flex; justify-content: space-between; font-size: 1rem; }
-        .stat-label { color: #fef08a; }
-        .stat-val { color: #fff; font-weight: 700; }
-
-        .card-value { text-align: center; font-size: 1.3rem; color: #fff; font-weight: 900; padding-bottom: 20px; text-shadow: 0 0 10px rgba(0,0,0,0.8); }
-
-        .spark { position: absolute; width: 4px; height: 20px; border-radius: 2px; opacity: 0; z-index: 20; }
 
         .lead-form-wrapper {
-            width: 95%; max-width: 450px;
-            margin-top: 40px; z-index: 10;
-            opacity: 0; transform: translateY(20px);
+            width: 95%;
+            max-width: 450px;
+            margin-top: 40px;
+            z-index: 10;
+            opacity: 0;
+            transform: translateY(20px);
             transition: opacity 0.8s ease, transform 0.8s ease;
             display: none;
         }
-        .lead-form-wrapper.show { display: block; opacity: 1; transform: translateY(0); }
+
+        .lead-form-wrapper.show {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
 
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
+
         .animate-fade-in-up {
             animation: fadeInUp 0.4s ease-out forwards;
         }
 
-        .layer_popup { z-index: 10000; position: fixed; left: 0; top: 0; width: 100%; height: 100%; display: none; }
-        .layer_popup .dimmed { z-index: 64; position: fixed; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.85); backdrop-filter: blur(5px); }
-        .layer_popup .content { z-index: 128; position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 90%; max-width: 400px; background-color: #151b2b; border: 2px solid #fbbf24; box-shadow: 0 0 30px rgba(251, 191, 36, 0.2); }
+        .layer_popup {
+            z-index: 10000;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+
+        .layer_popup .dimmed {
+            z-index: 64;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(5px);
+        }
+
+        .layer_popup .content {
+            z-index: 128;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 400px;
+            background-color: #151b2b;
+            border: 2px solid #fbbf24;
+            box-shadow: 0 0 30px rgba(251, 191, 36, 0.2);
+        }
     </style>
 </head>
+
 <body class="antialiased">
 
     <header class="bg-fcpanel border-b border-gray-800 sticky top-0 z-50">
@@ -390,49 +718,88 @@
             <label class="cursor-pointer relative">
                 <input type="radio" name="insType" value="종합보험" class="ins-radio peer hidden" checked>
                 <div class="bg-fcpanel border border-gray-700 rounded-lg p-6 text-center transition-all duration-200">
-                    <svg class="w-10 h-10 mx-auto text-gray-400 peer-checked:text-fcaccent mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    <svg class="w-10 h-10 mx-auto text-gray-400 peer-checked:text-fcaccent mb-3" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
+                        </path>
+                    </svg>
                     <span class="block text-white font-bold text-lg">종합보험</span>
                     <div class="check-icon absolute top-4 right-4 text-fcaccent opacity-0 transition-opacity">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd"
+                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                clip-rule="evenodd"></path>
+                        </svg>
                     </div>
                 </div>
             </label>
             <label class="cursor-pointer relative">
                 <input type="radio" name="insType" value="운전자보험" class="ins-radio peer hidden">
                 <div class="bg-fcpanel border border-gray-700 rounded-lg p-6 text-center transition-all duration-200">
-                    <svg class="w-10 h-10 mx-auto text-gray-400 peer-checked:text-fcaccent mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>
+                    <svg class="w-10 h-10 mx-auto text-gray-400 peer-checked:text-fcaccent mb-3" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path>
+                    </svg>
                     <span class="block text-white font-bold text-lg">운전자보험</span>
                     <div class="check-icon absolute top-4 right-4 text-fcaccent opacity-0 transition-opacity">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd"
+                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                clip-rule="evenodd"></path>
+                        </svg>
                     </div>
                 </div>
             </label>
             <label class="cursor-pointer relative">
                 <input type="radio" name="insType" value="치아보험" class="ins-radio peer hidden">
                 <div class="bg-fcpanel border border-gray-700 rounded-lg p-6 text-center transition-all duration-200">
-                    <svg class="w-10 h-10 mx-auto text-gray-400 peer-checked:text-fcaccent mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"></path></svg>
+                    <svg class="w-10 h-10 mx-auto text-gray-400 peer-checked:text-fcaccent mb-3" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5">
+                        </path>
+                    </svg>
                     <span class="block text-white font-bold text-lg">치아보험</span>
                     <div class="check-icon absolute top-4 right-4 text-fcaccent opacity-0 transition-opacity">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd"
+                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                clip-rule="evenodd"></path>
+                        </svg>
                     </div>
                 </div>
             </label>
             <label class="cursor-pointer relative">
                 <input type="radio" name="insType" value="간병보험" class="ins-radio peer hidden">
                 <div class="bg-fcpanel border border-gray-700 rounded-lg p-6 text-center transition-all duration-200">
-                    <svg class="w-10 h-10 mx-auto text-gray-400 peer-checked:text-fcaccent mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                    <svg class="w-10 h-10 mx-auto text-gray-400 peer-checked:text-fcaccent mb-3" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
+                        </path>
+                    </svg>
                     <span class="block text-white font-bold text-lg">간병보험</span>
                     <div class="check-icon absolute top-4 right-4 text-fcaccent opacity-0 transition-opacity">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd"
+                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                clip-rule="evenodd"></path>
+                        </svg>
                     </div>
                 </div>
             </label>
         </div>
 
-        <button type="button" onclick="startScout()" class="btn-game w-full bg-fcaccent text-black font-black text-2xl py-6 shadow-[0_0_15px_rgba(212,255,0,0.3)] flex items-center justify-center">
+        <button type="button" onclick="startScout()"
+            class="btn-game w-full bg-fcaccent text-black font-black text-2xl py-6 shadow-[0_0_15px_rgba(212,255,0,0.3)] flex items-center justify-center">
             <div>
                 1대장 스카우트 시작
-                <svg class="w-7 h-7 inline-block ml-2 -mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M13 5l7 7-7 7M5 5l7 7-7 7"></path></svg>
+                <svg class="w-7 h-7 inline-block ml-2 -mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M13 5l7 7-7 7M5 5l7 7-7 7">
+                    </path>
+                </svg>
             </div>
         </button>
     </main>
@@ -446,31 +813,118 @@
             <div class="light-rays"></div>
             <div class="fc-card-inner">
                 <div class="fc-card-back">
-                    <svg class="w-24 h-24 text-gray-400 mb-2 drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                    <svg class="w-24 h-24 text-gray-400 mb-2 drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+                        </path>
+                    </svg>
                 </div>
-                <div class="fc-card-front gold pt-6">
-                    <div class="shockwave"></div>
-                    <div class="fc-card-data" id="cardDataWrapper">
-                        <div class="px-6 flex justify-between items-start">
-                            <div>
-                                <div class="card-ovr" id="resultOvr">128</div>
-                                <div class="card-pos" id="resultPos">종합보험</div>
+                <div class="fc-card-front toty">
+                    <div class="toty-bg"></div>
+                    <div class="toty-lightning"></div>
+                    <div class="toty-border-inner"></div>
+                    <div class="shockwave z-50"></div>
+
+                    <div class="fc-card-data z-10 relative flex flex-col h-full" id="cardDataWrapper">
+                        <!-- Top Left Info -->
+                        <div
+                            class="absolute top-6 left-6 flex flex-col items-center drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]">
+                            <div class="text-[2.8rem] font-black italic text-transparent bg-clip-text bg-gradient-to-b from-yellow-100 via-yellow-400 to-yellow-600 leading-none tracking-tighter pr-2 pt-1"
+                                id="resultOvr">
+                                132</div>
+                            <div class="text-[1.4rem] font-black italic text-yellow-400 leading-none tracking-widest mt-1 uppercase w-full text-center"
+                                id="resultPos">RW</div>
+                        </div>
+
+                        <!-- Epic Golden Crown -->
+                        <div class="mt-20 flex justify-center items-center relative z-10 w-full mb-auto">
+                            <!-- Brilliant glow behind the crown -->
+                            <div class="absolute w-44 h-44 bg-yellow-400/20 rounded-full blur-2xl"></div>
+
+                            <svg class="w-44 h-44 drop-shadow-[0_0_20px_rgba(251,191,36,0.6)]" viewBox="0 0 64 64"
+                                fill="url(#goldGradient)">
+                                <defs>
+                                    <!-- Premium metallic gold gradient -->
+                                    <linearGradient id="goldGradient" x1="20%" y1="0%" x2="80%" y2="100%">
+                                        <stop offset="0%" stop-color="#fffbeb" />
+                                        <stop offset="30%" stop-color="#eab308" />
+                                        <stop offset="50%" stop-color="#fef08a" />
+                                        <stop offset="80%" stop-color="#ca8a04" />
+                                        <stop offset="100%" stop-color="#713f12" />
+                                    </linearGradient>
+                                </defs>
+                                <!-- Majestic 3-Peak Crown Vector -->
+                                <path d="M12 46 h40 v4 c0 2 -2 4 -4 4 H16 c-2 0 -4 -2 -4 -4 Z" />
+                                <path d="M12 44 L6 18 L22 28 L32 8 L42 28 L58 18 L52 44 Z" />
+                                <!-- Center Jewel Light -->
+                                <polygon points="32,24 26,38 38,38" fill="#ffffff" opacity="0.6" />
+                            </svg>
+                        </div>
+
+                        <!-- Bottom Info -->
+                        <div class="absolute bottom-0 left-0 w-full flex flex-col items-center pb-6 z-20">
+                            <!-- +8 block & Text -->
+                            <div class="flex items-end justify-center mb-0 w-full px-2"
+                                style="transform: skewX(-5deg);">
+                                <div
+                                    class="bg-gradient-to-b from-yellow-300 to-yellow-500 text-black font-black text-3xl px-3 py-1.5 rounded-l text-center flex items-center justify-center border-2 border-yellow-200 border-r-0 shadow-[2px_2px_0_#000]">
+                                    8</div>
+                                <div
+                                    class="text-[2.1rem] whitespace-nowrap font-black italic tracking-tighter leading-none text-black bg-gradient-to-b from-yellow-300 to-yellow-600 px-3 py-1.5 rounded-r border-2 border-yellow-200 shadow-[2px_2px_0_#000] drop-shadow-[0_0_10px_rgba(251,191,36,0.6)] flex items-center">
+                                    오늘의 추천 상품<span id="btmOvr" class="hidden"></span>
+                                </div>
                             </div>
-                            <div class="text-right">
-                                <span class="bg-black text-fcgold text-sm font-bold px-3 py-1.5 rounded border border-fcgold shadow-[0_0_10px_rgba(251,191,36,0.5)]">+8강</span>
+
+                            <div class="text-white font-black text-2xl tracking-tight drop-shadow-[0_0_5px_rgba(0,0,0,1)] mt-2 mb-3 bg-black/50 px-4 py-1 rounded-full border border-gray-600 shadow-lg"
+                                id="cardName">
+                                SSS급 종합보험
+                            </div>
+
+                            <!-- Badges -->
+                            <div class="flex gap-4 opacity-100 items-center justify-center">
+                                <!-- South Korea Flag -->
+                                <div
+                                    class="w-8 h-5 bg-white relative overflow-hidden flex items-center justify-center border border-gray-300 shadow shadow-black">
+                                    <div
+                                        class="absolute top-[1.5px] left-[1.5px] w-[6px] h-0.5 bg-black rotate-[35deg]">
+                                    </div>
+                                    <div
+                                        class="absolute top-[1.5px] right-[1.5px] w-[6px] h-0.5 bg-black -rotate-[35deg]">
+                                    </div>
+                                    <div
+                                        class="absolute bottom-[1.5px] left-[1.5px] w-[6px] h-0.5 bg-black -rotate-[35deg]">
+                                    </div>
+                                    <div
+                                        class="absolute bottom-[1.5px] right-[1.5px] w-[6px] h-0.5 bg-black rotate-[35deg]">
+                                    </div>
+                                    <div class="w-3.5 h-3.5 rounded-full"
+                                        style="background: linear-gradient(#dc2626 50%, #2563eb 50%); transform: rotate(20deg);">
+                                    </div>
+                                </div>
+                                <div
+                                    class="w-7 h-7 rounded-full bg-white flex items-center justify-center shadow shadow-black">
+                                    <svg class="w-4 h-4 text-gray-900" fill="currentColor" viewBox="0 0 20 20">
+                                        <path
+                                            d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z" />
+                                    </svg>
+                                </div>
+                                <div
+                                    class="w-7 h-7 rounded-full bg-red-600 border border-white shadow shadow-black flex items-center justify-center">
+                                    <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path
+                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <div class="hidden">
+                                <span id="stat1Label"></span><span id="stat1"></span>
+                                <span id="stat2Label"></span><span id="stat2"></span>
+                                <span id="stat3Label"></span><span id="stat3"></span>
+                                <span id="stat4Label"></span><span id="stat4"></span>
                             </div>
                         </div>
-                        <div class="flex-grow flex items-center justify-center">
-                            <svg class="w-32 h-32 text-white opacity-90 drop-shadow-[0_0_20px_rgba(255,255,255,0.9)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
-                        </div>
-                        <div class="card-name text-fcgoldlight">SSS급</div>
-                        <div class="card-stats mt-2">
-                            <div class="stat-item"><span class="stat-label" id="stat1Label">보장범위</span><span class="stat-val" id="stat1">128</span></div>
-                            <div class="stat-item"><span class="stat-label" id="stat2Label">할인율</span><span class="stat-val" id="stat2">122</span></div>
-                            <div class="stat-item"><span class="stat-label" id="stat3Label">가성비</span><span class="stat-val" id="stat3">130</span></div>
-                            <div class="stat-item"><span class="stat-label" id="stat4Label">가입속도</span><span class="stat-val" id="stat4">115</span></div>
-                        </div>
-                        <div class="card-value">이번 달 추천 상품</div>
                     </div>
                 </div>
             </div>
@@ -478,39 +932,48 @@
         </div>
 
         <div class="lead-form-wrapper" id="leadForm">
-            <div class="bg-fcpanel border-2 border-fcgold shadow-[0_0_30px_rgba(251,191,36,0.3)] p-6 relative rounded-lg mt-8">
+            <div
+                class="bg-fcpanel border-2 border-fcgold shadow-[0_0_30px_rgba(251,191,36,0.3)] p-6 relative rounded-lg mt-8">
                 <div class="text-center mb-6">
                     <h4 class="text-2xl font-black text-white">상세 견적 <span class="text-fcgold">스카우트 리포트</span></h4>
                     <p class="text-sm text-gray-400 mt-2 italic">상담 에이전트에게 전달될 스펙을 확인해 주세요.</p>
                 </div>
-                
+
                 <div id="scoutReport" class="mb-6 bg-black/60 border border-gray-700 rounded-lg p-4 hidden"></div>
 
-                <button type="button" id="btnContractOpen" onclick="openInputForm()" class="btn-game gold w-full bg-fcgold text-black font-black text-xl py-5 shadow-[0_0_15px_rgba(251,191,36,0.5)] flex items-center justify-center">
+                <button type="button" id="btnContractOpen" onclick="openInputForm()"
+                    class="btn-game gold w-full bg-fcgold text-black font-black text-xl py-5 shadow-[0_0_15px_rgba(251,191,36,0.5)] flex items-center justify-center">
                     <div>상세 정보 입력하고 견적 받기</div>
                 </button>
 
                 <form id="compareForm" onsubmit="submitForm(event)" class="hidden mt-3 space-y-5">
                     <div>
                         <label class="block text-gray-400 text-sm font-bold mb-2 ml-1">생년월일 (8자리)</label>
-                        <input type="number" id="userBirth" placeholder="예: 19900101" class="fc-input w-full px-5 py-4 text-xl bg-fcbg text-white border border-gray-600 focus:border-fcgold transition-colors text-center font-bold" required>
+                        <input type="number" id="userBirth" placeholder="예: 19900101"
+                            class="fc-input w-full px-5 py-4 text-xl bg-fcbg text-white border border-gray-600 focus:border-fcgold transition-colors text-center font-bold"
+                            required>
                     </div>
                     <div>
                         <label class="block text-gray-400 text-sm font-bold mb-2 ml-1">성별 선택</label>
                         <div class="flex gap-2">
-                            <button type="button" onclick="setGender('남성')" id="genderM" class="gender-btn rounded-l-lg">남성</button>
-                            <button type="button" onclick="setGender('여성')" id="genderF" class="gender-btn rounded-r-lg">여성</button>
+                            <button type="button" onclick="setGender('남성')" id="genderM"
+                                class="gender-btn rounded-l-lg">남성</button>
+                            <button type="button" onclick="setGender('여성')" id="genderF"
+                                class="gender-btn rounded-r-lg">여성</button>
                         </div>
                         <!-- 필수로 값이 채워져야 하므로 hidden input에 required 추가 -->
                         <input type="hidden" id="userGender" value="" required>
                     </div>
                     <div>
                         <label class="block text-gray-400 text-sm font-bold mb-2 ml-1">현재 직업</label>
-                        <input type="text" id="userJob" placeholder="예: 사무직, 현장직, 주부 등" class="fc-input w-full px-5 py-4 text-xl bg-fcbg text-white border border-gray-600 focus:border-fcgold transition-colors text-center font-bold" required>
+                        <input type="text" id="userJob" placeholder="예: 사무직, 현장직, 주부 등"
+                            class="fc-input w-full px-5 py-4 text-xl bg-fcbg text-white border border-gray-600 focus:border-fcgold transition-colors text-center font-bold"
+                            required>
                     </div>
                     <div>
                         <label class="block text-gray-400 text-sm font-bold mb-2 ml-1">원하는 보장/궁금한 점</label>
-                        <textarea id="userCoverage" rows="3" placeholder="예: 암진단비 위주로 구성하고 싶어요 / 기존 보험 리모델링 원해요" class="fc-input w-full px-5 py-4 text-lg bg-fcbg text-white border border-gray-600 focus:border-fcgold transition-colors font-bold resize-none"></textarea>
+                        <textarea id="userCoverage" rows="3" placeholder="예: 암진단비 위주로 구성하고 싶어요 / 기존 보험 리모델링 원해요"
+                            class="fc-input w-full px-5 py-4 text-lg bg-fcbg text-white border border-gray-600 focus:border-fcgold transition-colors font-bold resize-none"></textarea>
                     </div>
                     <div class="bg-fcbg p-4 border border-gray-800 rounded">
                         <label class="flex items-start space-x-3 cursor-pointer">
@@ -520,12 +983,14 @@
                             </span>
                         </label>
                     </div>
-                    <button type="submit" class="btn-game gold w-full bg-fcgold text-black font-black text-xl py-5 shadow-[0_0_15px_rgba(251,191,36,0.5)] flex items-center justify-center">
+                    <button type="submit"
+                        class="btn-game gold w-full bg-fcgold text-black font-black text-xl py-5 shadow-[0_0_15px_rgba(251,191,36,0.5)] flex items-center justify-center">
                         <div>계약 신청 (리포트 전송)</div>
                     </button>
                 </form>
-                    
-                <button type="button" onclick="cancelScout()" class="w-full text-center text-gray-500 text-sm mt-6 underline">
+
+                <button type="button" onclick="cancelScout()"
+                    class="w-full text-center text-gray-500 text-sm mt-6 underline">
                     다른 포지션 다시 찾기
                 </button>
             </div>
@@ -539,15 +1004,19 @@
                 <h4 class="text-black text-xl font-black">스카우팅 성공!</h4>
             </div>
             <div class="p-8 text-center bg-fcpanel">
-                <div class="w-20 h-20 bg-fcbg border-2 border-fcgold text-fcgold rounded-full flex items-center justify-center mx-auto mb-6 shadow-[0_0_15px_rgba(251,191,36,0.3)]">
-                    <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                <div
+                    class="w-20 h-20 bg-fcbg border-2 border-fcgold text-fcgold rounded-full flex items-center justify-center mx-auto mb-6 shadow-[0_0_15px_rgba(251,191,36,0.3)]">
+                    <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                    </svg>
                 </div>
                 <h5 class="text-2xl font-black text-white mb-4">리포트가 복사됐어!</h5>
                 <p class="text-base text-gray-300 leading-relaxed mb-8">
                     신청하신 정보가 자동으로 복사되었습니다.<br>
                     지금 바로 <b class="text-fcgold">상담 페이지</b>로 넘어가서<br>복사된 리포트를 붙여넣어 확인해 봐!
                 </p>
-                <button type="button" onclick="goToKakao()" class="btn-game w-full bg-[#FEE500] text-[#191919] font-black text-xl py-5 hover:bg-yellow-400 mb-4 shadow-lg">
+                <button type="button" onclick="goToKakao()"
+                    class="btn-game w-full bg-[#FEE500] text-[#191919] font-black text-xl py-5 hover:bg-yellow-400 mb-4 shadow-lg">
                     <div>상담 페이지 이동하기</div>
                 </button>
                 <button type="button" onclick="location.reload()" class="w-full text-gray-500 text-sm underline">
@@ -561,14 +1030,14 @@
         function setGender(val) {
             // 1. 값 설정
             document.getElementById('userGender').value = val;
-            
+
             // 2. 비주얼 피드백 (기존 active 제거 후 추가)
             const mBtn = document.getElementById('genderM');
             const fBtn = document.getElementById('genderF');
-            
+
             mBtn.classList.remove('active');
             fBtn.classList.remove('active');
-            
+
             if (val === '남성') mBtn.classList.add('active');
             if (val === '여성') fBtn.classList.add('active');
         }
@@ -589,7 +1058,7 @@
 
         function createExplosionSparks() {
             const colors = ['#ffffff', '#fef08a', '#fbbf24', '#f59e0b'];
-            for(let i=0; i<80; i++) {
+            for (let i = 0; i < 80; i++) {
                 let spark = document.createElement('div');
                 spark.className = 'spark';
                 spark.style.left = '50%';
@@ -597,12 +1066,12 @@
                 spark.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
                 document.getElementById('pack-overlay').appendChild(spark);
                 let angle = Math.random() * Math.PI * 2;
-                let velocity = 50 + Math.random() * 80; 
+                let velocity = 50 + Math.random() * 80;
                 let x = Math.cos(angle) * velocity;
                 let y = Math.sin(angle) * velocity;
                 spark.animate([
                     { transform: 'translate(0,0) scale(1) rotate(' + (angle * 180 / Math.PI + 90) + 'deg)', opacity: 1 },
-                    { transform: `translate(${x*10}px, ${y*10}px) scale(0.1) rotate(${angle * 180 / Math.PI + 90}deg)`, opacity: 0 }
+                    { transform: `translate(${x * 10}px, ${y * 10}px) scale(0.1) rotate(${angle * 180 / Math.PI + 90}deg)`, opacity: 0 }
                 ], {
                     duration: 400 + Math.random() * 400,
                     easing: 'cubic-bezier(0.2, 1, 0.3, 1)',
@@ -614,8 +1083,18 @@
         function startScout() {
             const selectedIns = document.querySelector('input[name="insType"]:checked').value;
             const reportDiv = document.getElementById('scoutReport');
-            document.getElementById('resultPos').innerText = selectedIns;
-            document.getElementById('resultOvr').innerText = Math.floor(Math.random() * 11) + 120;
+
+            const ovrVal = Math.floor(Math.random() * 11) + 120;
+            document.getElementById('resultOvr').innerText = ovrVal;
+            document.getElementById('btmOvr').innerText = ovrVal;
+
+            let posText = 'ST';
+            if (selectedIns === '운전자보험') posText = 'CB';
+            else if (selectedIns === '치아보험') posText = 'GK';
+            else if (selectedIns === '간병보험') posText = 'CDM';
+            document.getElementById('resultPos').innerText = posText;
+
+            document.getElementById('cardName').innerText = 'SSS급 ' + selectedIns;
 
             if (selectedIns === '종합보험') {
                 document.getElementById('stat1Label').innerText = '암진단'; document.getElementById('stat1').innerText = '5천';
@@ -705,6 +1184,9 @@
                         <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2v7M2 12h7m6 0h7M12 15v7"></path><circle cx="12" cy="12" r="10" stroke-width="2"></circle></svg>
                         운전자 필수 핵심 특약
                     </div>
+                    <div class="text-center mb-3">
+                        <span class="inline-block text-fcaccent text-sm font-black bg-fcaccent/20 px-3 py-1 rounded-full border border-fcaccent/30 shadow-[0_0_10px_rgba(212,255,0,0.2)]">✨ 월 보험료 1만원대 가입 가능!</span>
+                    </div>
                     <div class="space-y-4">
                         <div class="bg-gray-800/80 p-5 rounded-xl border-2 border-fcaccent/30 shadow-[0_0_15px_rgba(212,255,0,0.1)]">
                             <div class="flex justify-between items-center mb-4 border-b border-gray-600 pb-3">
@@ -760,7 +1242,7 @@
             document.getElementById('compareForm').classList.add('hidden');
             document.getElementById('compareForm').classList.remove('animate-fade-in-up');
             document.getElementById('compareForm').reset();
-            setGender(''); 
+            setGender('');
 
             overlay.style.display = 'flex';
             card.style.display = 'block';
@@ -791,8 +1273,9 @@
                 card.classList.add('engrave');
                 createExplosionSparks();
                 setTimeout(() => {
+                    card.style.display = 'none'; // 스카우트 리포트가 나올 때 카드를 숨깁니다.
                     form.classList.add('show');
-                    overlay.scrollTo({ top: overlay.scrollHeight, behavior: 'smooth' });
+                    overlay.scrollTo({ top: 0, behavior: 'smooth' });
                 }, 1200);
             }, 500);
         }
@@ -823,7 +1306,7 @@
             const agree = document.getElementById('agreeTerms').checked;
             const selectedIns = document.querySelector('input[name="insType"]:checked').value;
 
-            if(!birth || !gender || !job || !agree) {
+            if (!birth || !gender || !job || !agree) {
                 // 성별 미선택 시 강조 효과 등을 줄 수 있음
                 return;
             }
@@ -845,4 +1328,5 @@
         }
     </script>
 </body>
+
 </html>
